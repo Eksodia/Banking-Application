@@ -76,8 +76,8 @@ def client_account(client_user):
     account = BankAccount(
         id=uuid4(),
         iban="DE44500105175407324931",
-        type=AccountType.current,
-        status=AccountStatus.active,
+        type=AccountType.CURRENT,
+        status=AccountStatus.ACTIVE,
         owner_id=user.id
     )
     db.add(account)
@@ -107,8 +107,8 @@ def client2_account(client2_user):
     account = BankAccount(
         id=uuid4(),
         iban="FR44500105175407324941",
-        type=AccountType.current,
-        status=AccountStatus.active,
+        type=AccountType.CURRENT,
+        status=AccountStatus.ACTIVE,
         owner_id=user.id
     )
     db.add(account)
@@ -152,7 +152,7 @@ def test_review_card_approve(banker_user, created_card_id):
         "status": "APPROVED"
     }
     response = client.patch(
-        f"/card/{created_card_id}/review",
+        f"/card/{created_card_id}/approve",
         headers={"Authorization": f"Bearer {token}"},
         json=payload
     )

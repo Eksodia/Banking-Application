@@ -1,3 +1,4 @@
+import logging
 from fastapi import FastAPI, Depends
 import os
 from src import router
@@ -8,6 +9,8 @@ from sqlalchemy import text
 from src.database import get_db  
 
 load_dotenv()
+LOG_LEVEL = os.getenv("LOG_LEVEL", "info")
+logging.basicConfig(level=LOG_LEVEL.upper())
 
 app = FastAPI()
 

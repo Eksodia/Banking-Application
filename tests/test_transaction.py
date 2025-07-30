@@ -65,8 +65,8 @@ def sender_account(client_user):
         iban="AL93202111090000000001234567",
         balance=1000.0,
         currency="EUR",
-        status=AccountStatus.active,
-        type=AccountType.current,
+        status=AccountStatus.ACTIVE,
+        type=AccountType.CURRENT,
         owner_id=user.id
     )
     db.add(account)
@@ -83,8 +83,8 @@ def recipient_account(client_user):
         iban="AL47212110090000000235698741",
         balance=500.0,
         currency="EUR",
-        status=AccountStatus.active,
-        type=AccountType.current,
+        status=AccountStatus.ACTIVE,
+        type=AccountType.CURRENT,
         owner_id=user.id
     )
     db.add(account)

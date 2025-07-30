@@ -67,7 +67,7 @@ def created_account_id_fixture(test_client_token):
     token, user_id = test_client_token
     payload = {
         "currency": "EUR",
-        "type": "current"
+        "type": "CURRENT"
     }
     response = client.post(
         f"/account/?owner_id={user_id}",
@@ -82,7 +82,7 @@ def test_create_account(test_client_token):
     token, user_id = test_client_token
     payload = {
         "currency": "EUR",
-        "type": "current"
+        "type": "CURRENT"
     }
     response = client.post(
         f"/account/?owner_id={user_id}",
@@ -92,8 +92,8 @@ def test_create_account(test_client_token):
     assert response.status_code == 200
     data = response.json()
     assert data["currency"] == "EUR"
-    assert data["type"] == "current"
-    assert data["status"] == "pending"
+    assert data["type"] == "CURRENT"
+    assert data["status"] == "PENDING"
 
 
 def test_get_account(test_client_token, created_account_id_fixture):
@@ -120,7 +120,7 @@ def test_update_account(test_banker_token, created_account_id_fixture):
     token = test_banker_token
     update_payload = {
         "balance": 1000,
-        "status": "active"
+        "status": "ACTIVE"
         
     }
     response = client.patch(
@@ -132,7 +132,7 @@ def test_update_account(test_banker_token, created_account_id_fixture):
     print(response.json())
 
     assert response.status_code == 200
-    assert response.json()["status"] == "active"
+    assert response.json()["status"] == "ACTIVE"
 
 
 def test_delete_account(test_banker_token, created_account_id_fixture):
